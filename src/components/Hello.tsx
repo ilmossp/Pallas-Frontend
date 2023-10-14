@@ -1,9 +1,14 @@
 import { useState } from "react";
+import { useQuery } from "react-query";
+import { getHello } from "../lib/api";
 
 const Hello = () => {
-  const [state, setState] = useState(0);
-
-  return <p>Hello from Ilyass {state}</p>;
+  const { isSuccess, data } = useQuery("hello", getHello);
+  return (
+    <p className="text-3xl text-center">
+      {isSuccess ? data.message : "Loading ..."}
+    </p>
+  );
 };
 
 export default Hello;
