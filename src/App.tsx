@@ -1,16 +1,10 @@
-import { QueryClientProvider, QueryClient } from "react-query";
+import { useQuery } from "react-query";
 import Layout from "./components/Layout";
-import Hello from "./components/Hello";
+import { getQueue } from "./lib/api";
 
 const App = () => {
-  const queryClient = new QueryClient();
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Layout>
-        <Hello />
-      </Layout>
-    </QueryClientProvider>
-  );
+  const { data, isSuccess } = useQuery("getQueue", getQueue);
+  return <Layout></Layout>;
 };
 
 export default App;
