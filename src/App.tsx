@@ -2,14 +2,15 @@ import { useQuery } from "react-query";
 import Layout from "./components/Layout";
 import { getQueue } from "./lib/api";
 import PieChart from "./components/PieChart";
+import Stats from "./components/Stats";
 
 const App = () => {
-  const { data, isSuccess, isLoading } = useQuery("getQueue", getQueue);
+  const { data, isSuccess } = useQuery("getQueue", getQueue, { retry: true });
 
   return (
     <Layout>
       <main className="p-5">
-        {isLoading && (
+        {!isSuccess && (
           <span className="loading loading-infinity loading-lg"></span>
         )}
         {isSuccess && (
@@ -20,6 +21,7 @@ const App = () => {
               title="Services"
               element="service"
             ></PieChart>
+            <Stats queue={data}></Stats>
           </div>
         )}
       </main>
