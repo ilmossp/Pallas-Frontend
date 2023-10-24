@@ -10,13 +10,13 @@ const App = () => {
 
   return (
     <Layout>
-      <main className="p-5">
+      <main className="p-5 bg-base-200">
         {!isSuccess && (
           <span className="loading loading-infinity loading-lg"></span>
         )}
         {isSuccess && (
           <div className="space-y-5">
-            <div className="flex gap-5">
+            <div className="flex gap-5 justify-stretch">
               <PieChart
                 queue={data}
                 title="Protocols"

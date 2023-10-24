@@ -23,7 +23,7 @@ const PieChart = ({ queue, element, title }: PieProps) => {
       unfilterdData.push(count);
     });
     return (
-      <div className=" p-5 w-96 flex items-center justify-center flex-col rounded-md shadow">
+      <div className=" p-5 flex items-center justify-center flex-col rounded-2xl shadow bg-base-100">
         <Pie
           options={{}}
           data={{
