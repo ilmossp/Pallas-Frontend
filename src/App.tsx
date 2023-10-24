@@ -4,12 +4,14 @@ import { getQueue } from "./lib/api";
 import PieChart from "./components/PieChart";
 import Stats from "./components/Stats";
 import Table from "./components/Table";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const { data, isSuccess } = useQuery("getQueue", getQueue, { retry: true });
 
   return (
     <Layout>
+      <Toaster />
       <main className="p-5 bg-base-200">
         {!isSuccess && (
           <span className="loading loading-infinity loading-lg"></span>
