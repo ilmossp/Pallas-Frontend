@@ -7,17 +7,25 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const handleStart = () => {
-    const res = startCapture();
-    if (res) {
-      toast.success("Capture Started successfully");
+  const handleStart = async () => {
+    try {
+      const res = await startCapture();
+      if (res) {
+        toast.success("Capture started successfully");
+      }
+    } catch (error) {
+      toast.error("Capture Could Not be Started");
     }
   };
 
-  const handleStop = () => {
-    const res = stopCapture();
-    if (res) {
-      toast.success("Capture Stopped successfully");
+  const handleStop = async () => {
+    try {
+      const res = await stopCapture();
+      if (res) {
+        toast.success("Capture stopped successfully");
+      }
+    } catch (error) {
+      toast.error("Capture could not be stopped");
     }
   };
   return (
